@@ -25,7 +25,7 @@ func mineBlock(data: String) -> Int {
         dataToHash = data + String(nonce)
 
         hashResult = hash(data: dataToHash)
-        if ((hashResult & 0xff) == 0xFF) {
+        if ((hashResult & 0xff) == 0xAA) {
             return nonce
         }
         nonce += 1
@@ -54,8 +54,8 @@ func createBlock(previousHash: Int, payload: String) -> Block {
 }
 
 func main () {
-    let myBlock1 = createBlock(previousHash: 0, payload: "This is the first block, Genesis")
-    _ = createBlock(previousHash: myBlock1.hash, payload: "This is block 1")
+    let myBlock1 = createBlock(previousHash: 0, payload: "This is the first block for 0")
+    _ = createBlock(previousHash: myBlock1.hash, payload: "This is the first block for 92cdcfaa")
 }
 
 main()
